@@ -1,0 +1,86 @@
+<header class="header">
+  <div class="logo">🐾</div>
+
+  <div class="header-text">
+    <h1>Pet Adoption</h1>
+    <p>Find your new best friend</p>
+  </div>
+</header>
+
+
+<nav class="navbar">
+  <a routerLink="/home">Home</a>
+  <a routerLink="/pets">Pets</a>
+  <a routerLink="/about">About Us</a>
+  <a routerLink="/contact">Contact</a>
+  
+ <a routerLink="/signup">Sign Up</a>
+</nav>
+
+
+<div class="page-content">
+
+  <aside class="sidebar">
+
+    <h2>Pet Categories</h2>
+
+    <ul>
+
+      <li>
+        <a
+          routerLink="/pets"
+          [queryParams]="{ type: 'Dog' }"
+        >
+          🐶 Dogs
+        </a>
+      </li>
+
+      <li>
+        <a
+          routerLink="/pets"
+          [queryParams]="{ type: 'Cat' }"
+        >
+          🐱 Cats
+        </a>
+      </li>
+
+      <li>
+        <a
+          routerLink="/pets"
+          [queryParams]="{ type: 'Rabbit' }"
+        >
+          🐰 Rabbits
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/pets">
+          All Pets
+        </a>
+      </li>
+
+    </ul>
+
+  </aside>
+
+
+  <main class="main-content">
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+</div>
+
+
+<footer class="footer">
+
+  <p>
+    &copy; 2026 Pet Adoption. All rights reserved.
+  </p>
+
+  <p>
+    Give a pet a loving home 🐾
+  </p>
+
+</footer>

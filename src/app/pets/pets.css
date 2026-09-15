@@ -1,0 +1,185 @@
+.pet-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.pet-card {
+  width: 250px;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding-bottom: 20px;
+}
+
+.pet-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.pet-info {
+  padding: 15px;
+}
+
+.pet-info h3 {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+.pet-info p {
+  margin: 8px 0;
+}
+
+.pet-info hr {
+  margin: 15px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+/* More Info section */
+
+.pet-history {
+  margin-top: 10px;
+}
+
+.pet-history p {
+  margin: 8px 0;
+}
+
+/* Buttons */
+
+.pet-info button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #777;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.pet-info button:hover {
+  background: #555;
+}
+
+.pet-info .adopt-button {
+  background: #e88b8b;
+  margin-top: 15px;
+}
+
+.pet-info .adopt-button:hover {
+  background: #d96f6f;
+}
+
+.pet-info .adopt-button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+.adoption-form {
+  max-width: 750px;
+  margin: 50px auto;
+  padding: 35px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.adoption-form h2 {
+  text-align: center;
+  margin-top: 0;
+  font-size: 30px;
+}
+
+.form-intro {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.adoption-form h3 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.cancel-button,
+.submit-button {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 7px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background: #ddd;
+}
+
+.submit-button {
+  background: #e88b8b;
+  color: white;
+}
+
+.submit-button:hover {
+  background: #d96f6f;
+}
+
+.cancel-button:hover {
+  background: #ccc;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .adoption-form {
+    margin: 30px 15px;
+    padding: 25px;
+  }
+}

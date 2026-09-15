@@ -1,0 +1,18 @@
+aside {
+  padding: 20px;
+  background-color: #f5f5f5;
+  min-height: 300px;
+}
+
+aside h3 {
+  margin-top: 0;
+}
+
+aside ul {
+  list-style: none;
+  padding: 0;
+}
+
+aside li {
+  padding: 8px 0;
+}

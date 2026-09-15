@@ -1,0 +1,259 @@
+<h2>Pets Available for Adoption</h2>
+
+<p>Total pets: {{ pets.length }}</p>
+
+<div class="pet-cards">
+
+  @for (pet of filteredPets; track pet._id) {
+
+    <div class="pet-card">
+
+      <img
+        [src]="pet.type === 'Dog'
+          ? 'assets/dog.jpg'
+          : pet.type === 'Cat'
+          ? 'assets/cat.jpg'
+          : 'assets/rabbit.jpg'"
+        [alt]="pet.name"
+      >
+
+      <div class="pet-info">
+
+        <h3>{{ pet.name }}</h3>
+
+       
+
+        <p><strong>Breed:</strong> {{ pet.breed }}</p>
+
+        <p><strong>Age:</strong> {{ pet.age }}</p>
+
+        <button (click)="showMore(pet)">
+          {{ pet.showMore ? 'Hide Info' : 'More Info' }}
+        </button>
+
+        @if (pet.showMore) {
+
+          <div class="pet-history">
+
+            <hr>
+
+            <p><strong>Gender:</strong> {{ pet.gender }}</p>
+
+            <p><strong>Location:</strong> {{ pet.location }}</p>
+
+            <p><strong>Personality:</strong> {{ pet.personality }}</p>
+
+            <p><strong>Vaccination Status:</strong> {{ pet.vaccinationStatus }}</p>
+
+            <p><strong>Medical History:</strong> {{ pet.medicalHistory }}</p>
+
+            <p><strong>Adopted Before:</strong> {{ pet.adoptedBefore }}</p>
+
+            <p><strong>Previous Adoption:</strong> {{ pet.previousAdoption }}</p>
+
+            <p><strong>Full History:</strong> {{ pet.fullHistory }}</p>
+
+            <p>
+              <strong>Adoption Status:</strong>
+              {{ pet.adopted ? 'Adopted' : 'Available' }}
+            </p>
+
+          </div>
+
+        }
+
+        <button
+          (click)="startAdoption(pet)"
+          [disabled]="pet.adopted"
+        >
+          {{ pet.adopted ? 'Adopted' : 'Adopt Me' }}
+        </button>
+
+      </div>
+
+    </div>
+
+  }
+
+</div>
+
+
+@if (selectedPet) {
+
+  <div class="adoption-form">
+
+    <h2>Adoption Application</h2>
+
+    <p class="form-intro">
+      You are applying to adopt
+      <strong>{{ selectedPet.name }}</strong>.
+      Please complete the form below.
+    </p>
+
+    <form>
+
+      <h3>Your Information</h3>
+
+      <div class="form-row">
+
+        <div class="form-group">
+          <label>Full Name</label>
+
+          <input
+            type="text"
+            placeholder="Enter your full name"
+          >
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+
+          <input
+            type="email"
+            placeholder="Enter your email"
+          >
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-group">
+          <label>Phone Number</label>
+
+          <input
+            type="tel"
+            placeholder="Enter your phone number"
+          >
+        </div>
+
+        <div class="form-group">
+          <label>City</label>
+
+          <input
+            type="text"
+            placeholder="Enter your city"
+          >
+        </div>
+
+      </div>
+
+
+      <h3>About Your Home</h3>
+
+      <div class="form-group">
+
+        <label>What type of home do you live in?</label>
+
+        <select>
+          <option value="">Select your home type</option>
+          <option value="house">House</option>
+          <option value="apartment">Apartment</option>
+          <option value="villa">Villa</option>
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Do you currently have other pets?</label>
+
+        <select>
+          <option value="">Select an option</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+
+      </div>
+
+
+      <h3>About the Adoption</h3>
+
+      <div class="form-group">
+
+        <label>
+          Why would you like to adopt {{ selectedPet.name }}?
+        </label>
+
+        <textarea
+          rows="5"
+          placeholder="Tell us why you would like to adopt this pet..."
+        ></textarea>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Have you owned a pet before?</label>
+
+        <select>
+          <option value="">Select an option</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+
+      </div>
+
+
+      <div class="form-buttons">
+
+        <button
+          type="button"
+          class="cancel-button"
+          (click)="cancelApplication()"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="button"
+          class="submit-button"
+          (click)="submitApplication()"
+        >
+          Submit Application
+        </button>
+
+      </div>
+
+    </form>
+
+
+    @if (applicationSubmitted) {
+
+      <div class="success-message">
+
+        <h3>Application Submitted</h3>
+
+        <p>
+          Your application to adopt
+          <strong>{{ selectedPet.name }}</strong>
+          has been submitted successfully.
+        </p>
+
+        <p>
+          <strong>Status:</strong> Pending Review
+        </p>
+
+        <p>
+          Our adoption team will review your application
+          and contact you soon.
+        </p>
+
+        <button
+          type="button"
+          class="submit-button"
+          (click)="cancelApplication()"
+        >
+          Done
+        </button>
+
+      </div>
+
+    }
+
+  </div>
+
+}
