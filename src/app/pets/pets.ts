@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PetService } from '../services/pet.service';
 
@@ -14,7 +14,7 @@ export class Pets implements OnInit {
   filteredPets: any[] = [];
 
   selectedPet: any = null;
-  applicationSubmitted = false;
+  applicationSubmitted = signal(false);
 
   constructor(
     private petService: PetService,
@@ -24,7 +24,7 @@ export class Pets implements OnInit {
   ngOnInit() {
     this.petService.getPets().subscribe((response: any) => {
 
-      this.pets = response;
+      this.pets = response.data.pets;
       this.filteredPets = this.pets;
 
       this.route.queryParams.subscribe(params => {
@@ -50,16 +50,16 @@ export class Pets implements OnInit {
 
   startAdoption(pet: any) {
     this.selectedPet = pet;
-    this.applicationSubmitted = false;
+    this.applicationSubmitted.set(false);
   }
 
   submitApplication() {
-    this.applicationSubmitted = true;
+    this.applicationSubmitted.set(true);
   }
 
   cancelApplication() {
     this.selectedPet = null;
-    this.applicationSubmitted = false;
+    this.applicationSubmitted.set(false);
   }
 
   adoptPet(pet: any) {
